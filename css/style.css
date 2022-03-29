@@ -1,21 +1,6 @@
-::-webkit-scrollbar {
-  width: 15px;
-  height: 15px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: rgba(149, 233, 243, 0.7);
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #A9313A;
-}
-
 body {
-  background-image: -webkit-gradient(linear, left top, right top, from(#fbd5fb), to(#95e9f3));
-  background-image: linear-gradient(90deg, #fbd5fb, #95e9f3);
   color: #A9313A;
+  background-color: #f1eae3;
 }
 
 @media screen and (min-width: 480px) {
@@ -34,46 +19,26 @@ body {
   bottom: 0;
   left: 0;
   width: 300px;
-  background-color: #A9313A;
-  color: #fff;
+  background-color: #f1eae3;
+  color: #A9313A;
   padding: 20px;
-  border-radius: 0 20px 20px 0;
+  border-right: 1px solid #A9313A;
   overflow-y: scroll;
   z-index: 200;
-  -webkit-filter: drop-shadow(9px 10px 8px rgba(90, 41, 45, 0.2));
-          filter: drop-shadow(9px 10px 8px rgba(90, 41, 45, 0.2));
 }
 
 .nav::-webkit-scrollbar {
   display: none;
 }
 
-.contWrap {
-  width: calc(100vw - 300px);
-  margin-left: auto;
-}
-
-header {
-  margin: 0 auto 40px;
-  color: #A9313A;
-  text-align: center;
-  font-size: 2.5em;
-  font-family: 'Kaisei Opti', serif;
-  font-weight: 500;
-}
-
-header h1 {
-  padding: 30px 0;
-}
-
-main {
-  width: 1000px;
-  margin: 0 auto 60px;
-  color: #A9313A;
+@media screen and (max-width: 480px) {
+  .nav {
+    display: none;
+  }
 }
 
 .sortControl {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .sortControl .checkBtnWrap {
@@ -113,7 +78,7 @@ main {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  background-color: #fff;
+  background-color: #A9313A;
 }
 
 .sortControl .cond1 {
@@ -147,7 +112,7 @@ main {
   display: block;
   width: 1em;
   height: 1em;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(169, 49, 58, 0.5);
   border-radius: 3px;
   top: calc(50% - 0.6em);
   left: -0.2em;
@@ -157,8 +122,8 @@ main {
   position: absolute;
   content: "";
   display: block;
-  border-right: 4px solid #fff;
-  border-bottom: 2px solid #fff;
+  border-right: 4px solid #A9313A;
+  border-bottom: 2px solid #A9313A;
   width: 15px;
   height: 20px;
   left: -2px;
@@ -178,33 +143,56 @@ main {
           transform: rotate(45deg) scale3d(1, 1, 1);
 }
 
-@media screen and (min-width: 480px) {
-  .sortControl .cond1 label:hover span {
-    color: #fff;
-    background-color: #A9313A;
-    -webkit-transition: 300ms;
-    transition: 300ms;
+.contWrap {
+  width: calc(100vw - 340px);
+  margin-left: auto;
+}
+
+header {
+  margin: 0 auto 40px;
+  color: #A9313A;
+  text-align: center;
+  font-size: 2.5em;
+  font-family: 'Kaisei Opti', serif;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    font-size: 2em;
   }
 }
 
+header h1 {
+  padding: 30px 0;
+}
+
+main {
+  width: 1000px;
+  margin: 0 auto 60px;
+  color: #A9313A;
+}
+
 .itemList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   gap: 30px 0;
 }
 
 .itemList .item {
   width: 49%;
   padding: 25px;
-  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20px;
+  background-color: #f5f1ec;
   border: 1px solid #A9313A;
+  -webkit-filter: drop-shadow(5px 7px 0px #A9313A);
+          filter: drop-shadow(5px 7px 0px #A9313A);
 }
 
 .itemList .item.widthFull {
@@ -343,14 +331,12 @@ main {
           justify-content: end;
   font-family: 'Kaisei Opti', serif;
   gap: 10px;
-  -webkit-filter: drop-shadow(-9px 10px 8px rgba(90, 41, 45, 0.2));
-          filter: drop-shadow(-9px 10px 8px rgba(90, 41, 45, 0.2));
   z-index: 300;
 }
 
 .bottom-total .resetBtn {
   padding: 15px 30px;
-  background-color: white;
+  background-color: #f1eae3;
   color: #A9313A;
   border: 2px solid #A9313A;
   border-bottom: #fff;
@@ -358,6 +344,8 @@ main {
   border-top-right-radius: 20px;
   font-size: 1.2em;
   font-weight: bold;
+  -webkit-filter: drop-shadow(5px 7px 0px #A9313A);
+          filter: drop-shadow(5px 7px 0px #A9313A);
 }
 
 .bottom-total .allTotal {

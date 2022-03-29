@@ -20,26 +20,25 @@ $sp: 480px;
 }
 
 // color
+$base-color:rgb(241, 234, 227);
 $maincolor:#A9313A;
 //z-index
 $total-zindex:300;
-::-webkit-scrollbar {
-    width: 15px;
-    height: 15px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: rgba(149, 233, 243, 0.7);
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: $maincolor;
-}
-
+// ::-webkit-scrollbar {
+//     width: 15px;
+//     height: 15px;
+// }
+// ::-webkit-scrollbar-track {
+//     background-color: rgba(149, 233, 243, 0.7);
+// }
+// ::-webkit-scrollbar-thumb {
+//     border-radius: 10px;
+//     background-color: $maincolor;
+// }
 body {
-    background-image: linear-gradient(90deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
+    // background-image: linear-gradient(90deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
     color: $maincolor;
+    background-color: rgb(241, 234, 227);
 }
 
 .allWrap {
@@ -49,6 +48,7 @@ body {
     }
 }
 
+//チェックボックス
 .nav {
     $navwidth: 300px;
     position: fixed;
@@ -56,44 +56,23 @@ body {
     bottom: 0;
     left: 0;
     width: 300px;
-    background-color: $maincolor;
-    color: #fff;
+    background-color: $base-color;
+    color: $maincolor;
     padding: 20px;
-    border-radius: 0 20px 20px 0;
+    // border-radius: 0 20px 20px 0;
+    border-right: 1px solid $maincolor;
     overflow-y: scroll;
     z-index: 200;
     &::-webkit-scrollbar {
         display: none;
     }
-    filter: drop-shadow(9px 10px 8px rgba(rgb(90, 41, 45), 0.2));
-}
-
-.contWrap {
-    width: calc(100vw - 300px);
-    margin-left: auto;
-}
-
-header {
-    margin: 0 auto 40px;
-    color: $maincolor;
-    // background-color: #c7d0b3;
-    text-align: center;
-    font-size: 2.5em;
-    font-family: 'Kaisei Opti', serif;
-    font-weight: 500;
-    h1 {
-        padding: 30px 0;
+    @include sp {
+        display: none;
     }
 }
 
-main {
-    width: 1000px;
-    margin: 0 auto 60px;
-    color: $maincolor;
-}
-
 .sortControl {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     .checkBtnWrap {
         width: 100%;
         // padding: 20px;
@@ -120,7 +99,7 @@ main {
                 margin-right: 10px;
                 height: 1px;
                 flex-grow: 1;
-                background-color: #fff;
+                background-color: $maincolor;
             }
         }
     }
@@ -146,7 +125,7 @@ main {
                 display: block;
                 width: 1em;
                 height: 1em;
-                border: 1px solid rgba(#fff, 0.5);
+                border: 1px solid rgba($maincolor, 0.5);
                 border-radius: 3px;
                 top: calc(50% - 0.6em);
                 left: -0.2em;
@@ -155,8 +134,8 @@ main {
                 position: absolute;
                 content: "";
                 display: block;
-                border-right: 4px solid #fff;
-                border-bottom: 2px solid #fff;
+                border-right: 4px solid $maincolor;
+                border-bottom: 2px solid $maincolor;
                 width: 15px;
                 height: 20px;
                 left: -2px;
@@ -172,30 +151,51 @@ main {
                 transform: rotate(45deg) scale3d(1, 1, 1);
             }
         }
-        label:hover span {
-            @include pc {
-                color: #fff;
-                background-color: $maincolor;
-                transition: 300ms;
-            }
-        }
     }
 }
 
+//mainのまとまり
+.contWrap {
+    width: calc(100vw - 340px);
+    margin-left: auto;
+}
+
+header {
+    margin: 0 auto 40px;
+    color: $maincolor;
+    // background-color: #c7d0b3;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: 'Kaisei Opti', serif;
+    font-weight: 500;
+    @include sp {
+        font-size: 2em;
+    }
+    h1 {
+        padding: 30px 0;
+    }
+}
+
+main {
+    width: 1000px;
+    margin: 0 auto 60px;
+    color: $maincolor;
+}
+
 .itemList {
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    display: flex;
     gap: 30px 0;
 }
 
 .itemList .item {
     width: 49%;
     padding: 25px;
-    background-color: rgba(#fff, 0.7);
     border-radius: 20px;
+    background-color: rgba(rgb(245, 241, 236), 1);
     border: 1px solid $maincolor;
-    // box-shadow: rgba(100, 100, 111, 0.2) 0px 3px 10px 0px;
+    filter: drop-shadow(5px 7px 0px $maincolor);
     &.widthFull {
         width: 100%;
     }
@@ -316,11 +316,11 @@ main {
     justify-content: end;
     font-family: 'Kaisei Opti', serif;
     gap: 10px;
-    filter: drop-shadow(-9px 10px 8px rgba(rgb(90, 41, 45), 0.2));
+    // filter: drop-shadow(-5px 5px 5px rgba(rgb(90, 41, 45), 0.2));
     z-index: $total-zindex;
     .resetBtn {
         padding: 15px 30px;
-        background-color: rgba(#fff, 1);
+        background-color: rgba($base-color, 1);
         color: $maincolor;
         border: 2px solid $maincolor;
         border-bottom: #fff;
@@ -328,6 +328,7 @@ main {
         border-top-right-radius: 20px;
         font-size: 1.2em;
         font-weight: bold;
+        filter: drop-shadow(5px 7px 0px $maincolor);
     }
     .allTotal {
         display: flex;
