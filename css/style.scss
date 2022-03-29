@@ -1,0 +1,348 @@
+$pc: 1080px;
+$tab: 768px;
+$sp: 480px;
+@mixin pc {
+    @media screen and (min-width: ($sp)) {
+        @content;
+    }
+}
+
+@mixin tab {
+    @media screen and (max-width: ($tab)) {
+        @content;
+    }
+}
+
+@mixin sp {
+    @media screen and (max-width: ($sp)) {
+        @content;
+    }
+}
+
+// color
+$maincolor:#A9313A;
+//z-index
+$total-zindex:300;
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(149, 233, 243, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $maincolor;
+}
+
+body {
+    background-image: linear-gradient(90deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
+    color: $maincolor;
+}
+
+.allWrap {
+    @include pc {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.nav {
+    $navwidth: 300px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    background-color: $maincolor;
+    color: #fff;
+    padding: 20px;
+    border-radius: 0 20px 20px 0;
+    overflow-y: scroll;
+    z-index: 200;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    filter: drop-shadow(9px 10px 8px rgba(rgb(90, 41, 45), 0.2));
+}
+
+.contWrap {
+    width: calc(100vw - 300px);
+    margin-left: auto;
+}
+
+header {
+    margin: 0 auto 40px;
+    color: $maincolor;
+    // background-color: #c7d0b3;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: 'Kaisei Opti', serif;
+    font-weight: 500;
+    h1 {
+        padding: 30px 0;
+    }
+}
+
+main {
+    width: 1000px;
+    margin: 0 auto 60px;
+    color: $maincolor;
+}
+
+.sortControl {
+    margin-bottom: 60px;
+    .checkBtnWrap {
+        width: 100%;
+        // padding: 20px;
+        // border: 2px solid $maincolor;
+        border-radius: 20px;
+        &:nth-child(n+2) {
+            margin-top: 40px;
+        }
+        &.attention {
+            line-height: 1.4;
+            li+li {
+                margin-top: 5px;
+            }
+        }
+        .checkBtn-heading {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.7em;
+            font-family: 'Kaisei Opti', serif;
+            &:after {
+                content: "";
+                margin-left: 10px;
+                margin-right: 10px;
+                height: 1px;
+                flex-grow: 1;
+                background-color: #fff;
+            }
+        }
+    }
+    .cond1 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        width: 100%;
+        margin-top: 20px;
+        label input {
+            display: none;
+        }
+        label span {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+            padding: 7px 20px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            &::before {
+                position: absolute;
+                content: "";
+                display: block;
+                width: 1em;
+                height: 1em;
+                border: 1px solid rgba(#fff, 0.5);
+                border-radius: 3px;
+                top: calc(50% - 0.6em);
+                left: -0.2em;
+            }
+            &::after {
+                position: absolute;
+                content: "";
+                display: block;
+                border-right: 4px solid #fff;
+                border-bottom: 2px solid #fff;
+                width: 15px;
+                height: 20px;
+                left: -2px;
+                top: calc(50% - 20px);
+                transform: rotate(45deg) translate3d(0, 2px, 0);
+                opacity: 0;
+                transition: transform 100ms ease-in-out, opacity 100ms ease-in-out;
+            }
+        }
+        label input:checked+span {
+            &::after {
+                opacity: 1;
+                transform: rotate(45deg) scale3d(1, 1, 1);
+            }
+        }
+        label:hover span {
+            @include pc {
+                color: #fff;
+                background-color: $maincolor;
+                transition: 300ms;
+            }
+        }
+    }
+}
+
+.itemList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px 0;
+}
+
+.itemList .item {
+    width: 49%;
+    padding: 25px;
+    background-color: rgba(#fff, 0.7);
+    border-radius: 20px;
+    border: 1px solid $maincolor;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 3px 10px 0px;
+    &.widthFull {
+        width: 100%;
+    }
+    .storeName {
+        margin-bottom: 10px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .categoryList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #fff;
+        .category {
+            padding: 0.5em 1em;
+            border-radius: 1em;
+            background-color: #A9313A;
+        }
+    }
+    .bonus {
+        +.bonus {
+            margin-top: 15px;
+        }
+        &-heading {
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: $maincolor;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        dt {
+            margin-bottom: 0.5em;
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        dd {
+            .bonus-img {
+                margin-bottom: 10px;
+                width: 100%;
+                height: 200px;
+                border: 1px solid $maincolor;
+            }
+        }
+    }
+    .item-subSection {
+        margin-top: 20px;
+    }
+    .item-heading {
+        margin-bottom: 10px;
+        padding: 10px 15px;
+        background-color: $maincolor;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+    //計算表
+    .counter {
+        width: 100%;
+        font-size: 1.2em;
+        &.col3 {
+            td:nth-child(1) {
+                width: 15%;
+            }
+        }
+        thead {
+            border-bottom: 1px solid $maincolor;
+            th {
+                padding: 5px;
+                text-align: center;
+            }
+        }
+        tbody {
+            td {
+                width: 20%;
+                padding: 10px 10px 0;
+                text-align: center;
+                vertical-align: middle;
+                &:nth-child(4) {
+                    text-align: right;
+                }
+                .tax {
+                    font-size: 0.8em;
+                }
+                input {
+                    width: 5em;
+                    padding: 2px 5px 2px 15px;
+                    text-align: center;
+                    border: 1px solid rgba($maincolor, 0.5);
+                    border-radius: 5px;
+                }
+            }
+            .total {
+                border-top: 1px solid $maincolor;
+            }
+        }
+    }
+    .total {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 2px solid $maincolor;
+        font-weight: bold;
+        font-size: 1.3em;
+        text-align: right;
+    }
+}
+
+.bottom-total {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: end;
+    font-family: 'Kaisei Opti', serif;
+    gap: 10px;
+    filter: drop-shadow(-9px 10px 8px rgba(rgb(90, 41, 45), 0.2));
+    z-index: $total-zindex;
+    .resetBtn {
+        padding: 15px 30px;
+        background-color: rgba(#fff, 1);
+        color: $maincolor;
+        border: 2px solid $maincolor;
+        border-bottom: #fff;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+    .allTotal {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 270px;
+        padding: 17px 30px 17px;
+        background-color: $maincolor;
+        border-top-left-radius: 20px;
+        border-left: 2px solid #fff;
+        border-top: 2px solid #fff;
+        color: #fff;
+        font-size: 1.2em;
+        &-text {
+            font-size: 1.4em;
+        }
+    }
+}
