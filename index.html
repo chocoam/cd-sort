@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIZUNA 特典ソート</title>
+    <link rel="stylesheet" href="css/destyle.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&family=Secular+One&display=swap" rel="stylesheet">
+    <script src="./lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" class="allWrap">
+        <div class="nav">
+            <div class="sortControl">
+                <form>
+                    <div class="checkBtnWrap bonus">
+                        <h2 class="checkBtn-heading">BONUS</h2>
+                        <ul class="cond1">
+                            <checkbox label="photo" text="生写真"></checkbox>
+                            <checkbox label="treadingcard" text="トレカ"></checkbox>
+                            <checkbox label="postcard" text="ポストカード"></checkbox>
+                            <checkbox label="box" text="収納BOX"></checkbox>
+                            <checkbox label="sticker" text="ステッカー"></checkbox>
+                            <checkbox label="ppcase" text="PPマルチケース"></checkbox>
+                            <checkbox label="megaJacket" text="メガジャケ"></checkbox>
+                            <checkbox label="file" text="クリアファイル"></checkbox>
+                            <checkbox label="ICsticker" text="ICカードステッカー"></checkbox>
+                            <checkbox label="poster" text="ポスター"></checkbox>
+                            <checkbox label="shitajiki" text="下敷き"></checkbox>
+                            <checkbox label="event" text="リリイベ申込"></checkbox>
+                        </ul>
+                    </div>
+                    <div class="checkBtnWrap other">
+                        <h2 class="checkBtn-heading">OPTION</h2>
+                        <ul class="cond1">
+                            <checkbox2 label="choose" :data="0" text="推し選びたい"></checkbox2>
+                            <checkbox2 label="solo" data-group="0" text="単体のが欲しい"></checkbox2>
+                            <checkbox2 label="unit" data-group="0" text="ユニットのが欲しい"></checkbox2>
+                            <checkbox2 label="otoku" data-group="0" text="安く買いたい"></checkbox2>
+                        </ul>
+                    </div>
+                    <div class="checkBtnWrap attention">
+                        <ul>
+                            <li>※「BONUS」かつ「OPTION」に当てはまる店舗が表示されます</li>
+                            <li>※「OPTION」のみの検索も○</li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="contWrap">
+            <header>
+                <h1>KIZUNA 特典ソート</h1>
+            </header>
+            <main>
+                <ul class="itemList">
+                    <item label="photo treadingcard event choose solo" class="widthFull">
+                        <h2 class="storeName">JO1 OFFICIAL STORE</h2>
+                        <ul class="categoryList">
+                            <li class="category">生写真</li>
+                            <li class="category">11種</li>
+                            <li class="category">選べる</li>
+                            <li class="category">集合</li>
+                            <li class="category">リリイベ</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★メンバー別L判生写真(3形態いずれか)
+                                <br>★メンバー別トレカ(FC盤)
+                            </dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※AはAのメンバー5種、BはBのメンバー5種、通常は11種</li>
+                                    <li>※FC盤11種</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <dl class="bonus">
+                            <div class="bonus-heading">3形態セット購入</div>
+                            <dt>★推しのL判生写真 2枚＋推しがいない形態のユニットL判生写真 1枚＋2L判オリジナル集合生写真 1枚</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                            <th>小計</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1A' min="0"></td>
+                                            <td>=￥{{sumJo1A}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1B' min="0"></td>
+                                            <td>=￥{{sumJo1B}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1C' min="0"></td>
+                                            <td>=￥{{sumJo1C}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1Set' min="0"></td>
+                                            <td>=￥{{sumJo1Set}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FC</td>
+                                            <td>￥{{fc}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1Fc' min="0"></td>
+                                            <td>=￥{{sumJo1Fc}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalJo1}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="postcard event solo">
+                        <h2 class="storeName">TOWER RECORDS</h2>
+                        <ul class="categoryList">
+                            <li class="category">ポストカード</li>
+                            <li class="category">11種</li>
+                            <li class="category">ランダム</li>
+                            <li class="category">リリイベ</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★ポストカード2枚組(集合＋ソロ)</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※11種ランダム</li>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TowerA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TowerB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TowerC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TowerSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalTower}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="treadingcard event solo">
+                        <h2 class="storeName">HMV</h2>
+                        <ul class="categoryList">
+                            <li class="category">トレカ</li>
+                            <li class="category">11種</li>
+                            <li class="category">ランダム</li>
+                            <li class="category">リリイベ</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★クリアトレカ</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※11種ランダム</li>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='HmvA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='HmvB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='HmvC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='HmvSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalHmv}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="ICsticker unit">
+                        <h2 class="storeName">TSUTAYA</h2>
+                        <ul class="categoryList">
+                            <li class="category">ICカードステッカー</li>
+                            <li class="category">5種</li>
+                            <li class="category">ユニット</li>
+                            <li class="category">ランダム</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★ICカードステッカー</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※5種ランダム</li>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TsutayaA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TsutayaB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TsutayaC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='TsutayaSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalTsutaya}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="file event solo otoku">
+                        <h2 class="storeName">楽天ブックス</h2>
+                        <ul class="categoryList">
+                            <li class="category">クリアファイル</li>
+                            <li class="category">11種</li>
+                            <li class="category">ランダム</li>
+                            <li class="category">リリイベ</li>
+                            <li class="category">安い</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★クリアファイル</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※11種ランダム</li>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a10off}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='RakutenA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='RakutenB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='RakutenC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set10off}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='RakutenSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalRakuten}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="sticker unit">
+                        <h2 class="storeName">セブンネット</h2>
+                        <ul class="categoryList">
+                            <li class="category">ステッカー</li>
+                            <li class="category">5種</li>
+                            <li class="category">ユニット</li>
+                            <li class="category">ランダム</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★ステッカー</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※5種ランダム</li>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SevenA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SevenB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SevenC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SevenSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalSeven}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="megaJacket event">
+                        <h2 class="storeName">Amazon</h2>
+                        <ul class="categoryList">
+                            <li class="category">メガジャケ</li>
+                            <li class="category">4種</li>
+                            <li class="category">リリイベ</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★メガジャケ</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※購入したCD形態と同一絵柄</li>
+                                    <li>※4形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='AmazonA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='AmazonB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='AmazonC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='AmazonSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalAmazon}}</div>
+                            </div>
+                        </section>
+
+                    </item>
+                    <item label="photo">
+                        <h2 class="storeName">SonyMusicShop</h2>
+                        <ul class="categoryList">
+                            <li class="category">生写真</li>
+                            <li class="category">1種</li>
+                            <li class="category">集合</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★L判集合生写真</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SonyA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SonyB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SonyC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='SonySet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalSony}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="poster">
+                        <h2 class="storeName">ネオ・ウィング</h2>
+                        <ul class="categoryList">
+                            <li class="category">ポスター</li>
+                            <li class="category">1種</li>
+                            <li class="category">集合</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★クリアポスター</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='WingA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='WingB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='WingC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='WingSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalWing}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="poster">
+                        <h2 class="storeName">その他一般店</h2>
+                        <ul class="categoryList">
+                            <li class="category">ポスター</li>
+                            <li class="category">3種</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★形態別ポスター</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※3形態いずれか購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='NormalA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='NormalB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='NormalC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='NormalSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalNormal}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="shitajiki">
+                        <h2 class="storeName">一般店（アニメ盤購入特典）</h2>
+                        <ul class="categoryList">
+                            <li class="category">下敷き</li>
+                            <li class="category">1種</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★下敷き(アニメ絵柄)</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※アニメ盤購入</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>アニメ</td>
+                                            <td>￥{{anime}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='Anime' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalAnime}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="box choose solo">
+                        <h2 class="storeName">forTUNE music</h2>
+                        <ul class="categoryList">
+                            <li class="category">収納BOX</li>
+                            <li class="category">11種</li>
+                            <li class="category">選べる</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★収納BOX</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※3形態セット購入</li>
+                                    <li>※1次受付…2022年3月22日（火）18：00～3月31日（木）23：00</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='FortuneSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalFortune}}</div>
+                            </div>
+                        </section>
+                    </item>
+                    <item label="sticker ppcase">
+                        <h2 class="storeName">LAPONE ONLINE SHOP</h2>
+                        <ul class="categoryList">
+                            <li class="category">ステッカー</li>
+                            <li class="category">3種</li>
+                            <li class="category">PPマルチケース</li>
+                        </ul>
+                        <dl class="bonus">
+                            <dt>★各ジャケ写ステッカー＋ロゴステッカー</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                                <ul>
+                                    <li>※3形態いずれか</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <dl class="bonus">
+                            <h3 class="bonus-heading">3形態セット購入</h3>
+                            <dt>★PPマルチケース</dt>
+                            <dd>
+                                <div class="bonus-img"></div>
+                            </dd>
+                        </dl>
+                        <section class="item-subSection">
+                            <h3 class="item-heading">計算</h3>
+                            <div class="counter-wrap">
+                                <table class="counter col3">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='LaponeA' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='LaponeB' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='LaponeC' min="0"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br>セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='LaponeSet' min="0"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="total">合計 ￥{{totalLapone}}</div>
+                            </div>
+                        </section>
+                    </item>
+                </ul>
+            </main>
+            <div class="bottom-total">
+                <div class="resetBtn"><button @click="reset" type="button">Total Reset</button></div>
+                <div class="allTotal"><span>Total</span><span class="allTotal-text">¥{{total}}</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <script src="js/count.js"></script>
+    <script src="js/components.js"></script>
+</body>
+
+</html>
