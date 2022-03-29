@@ -84,7 +84,7 @@
                         </dl>
                         <dl class="bonus">
                             <div class="bonus-heading">3形態セット購入</div>
-                            <dt>★推しのL判生写真 2枚＋推しがいない形態のユニットL判生写真 1枚＋2L判オリジナル集合生写真 1枚</dt>
+                            <dt>★推しのL判生写真 2枚<br class="isSP">＋推しがいない形態のユニットL判生写真 1枚<br class="isSP">＋2L判オリジナル集合生写真 1枚</dt>
                             <dd>
                                 <div class="bonus-img"></div>
                             </dd>
@@ -98,7 +98,7 @@
                                             <th>形態</th>
                                             <th>値段</th>
                                             <th>個数</th>
-                                            <th>小計</th>
+                                            <th class="isPC">小計</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -106,31 +106,31 @@
                                             <td>A</td>
                                             <td>￥{{a}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='jo1A' min="0"></td>
-                                            <td>=￥{{sumJo1A}}</td>
+                                            <td class="isPC">=￥{{sumJo1A}}</td>
                                         </tr>
                                         <tr>
                                             <td>B</td>
                                             <td>￥{{b}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='jo1B' min="0"></td>
-                                            <td>=￥{{sumJo1B}}</td>
+                                            <td class="isPC">=￥{{sumJo1B}}</td>
                                         </tr>
                                         <tr>
                                             <td>通常</td>
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='jo1C' min="0"></td>
-                                            <td>=￥{{sumJo1C}}</td>
+                                            <td class="isPC">=￥{{sumJo1C}}</td>
                                         </tr>
                                         <tr>
-                                            <td>3形態セット</td>
+                                            <td>3形態<br class="isSP">セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='jo1Set' min="0"></td>
-                                            <td>=￥{{sumJo1Set}}</td>
+                                            <td class="isPC">=￥{{sumJo1Set}}</td>
                                         </tr>
                                         <tr>
                                             <td>FC</td>
                                             <td>￥{{fc}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='jo1Fc' min="0"></td>
-                                            <td>=￥{{sumJo1Fc}}</td>
+                                            <td class="isPC">=￥{{sumJo1Fc}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
