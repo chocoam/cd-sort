@@ -13,6 +13,7 @@
 body {
   color: #A9313A;
   background-color: #f1eae3;
+  font-family: sans-serif;
 }
 
 @media screen and (min-width: 480px) {
@@ -25,16 +26,34 @@ body {
   }
 }
 
+.toggle {
+  position: fixed;
+  width: 80px;
+  height: 60px;
+  top: 0;
+  right: 0;
+  color: #fff;
+  background-color: #A9313A;
+  border-bottom-left-radius: 20px;
+  border: 2px solid #f1eae3;
+  border-top: transparent;
+  border-right: transparent;
+  z-index: 250;
+  pointer-events: auto;
+}
+
+.toggle-text {
+  text-align: center;
+}
+
 .nav {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 0;
   width: 300px;
   background-color: #f1eae3;
   color: #A9313A;
   padding: 20px;
-  border-right: 1px solid #A9313A;
   overflow-y: scroll;
   z-index: 200;
 }
@@ -43,9 +62,30 @@ body {
   display: none;
 }
 
+@media screen and (min-width: 480px) {
+  .nav {
+    left: 0;
+    border-right: 1px solid #A9313A;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .nav {
-    display: none;
+    width: 92%;
+    right: 0;
+    border-left: 2px solid #A9313A;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0;
+  }
+  .nav.show {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+    -webkit-transition: opacity 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
+    transition: opacity 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
+    transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+    transition: transform 400ms ease-in-out, opacity 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
   }
 }
 
@@ -170,7 +210,7 @@ body {
 }
 
 header {
-  margin: 0 auto 40px;
+  margin: 30px auto 40px;
   color: #A9313A;
   text-align: center;
   font-size: 2.5em;
@@ -228,8 +268,8 @@ main {
   border-radius: 20px;
   background-color: #f5f1ec;
   border: 1px solid #A9313A;
-  -webkit-filter: drop-shadow(5px 7px 0px #A9313A);
-          filter: drop-shadow(5px 7px 0px #A9313A);
+  -webkit-box-shadow: 5px 7px 0px #A9313A;
+          box-shadow: 5px 7px 0px #A9313A;
 }
 
 @media screen and (min-width: 480px) {
@@ -241,6 +281,7 @@ main {
 @media screen and (max-width: 480px) {
   .itemList .item {
     width: 100%;
+    padding: 20px;
   }
 }
 

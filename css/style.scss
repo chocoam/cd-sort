@@ -24,6 +24,8 @@ $base-color:rgb(241, 234, 227);
 $maincolor:#A9313A;
 //z-index
 $total-zindex:300;
+$nav-zindex:200;
+$toggle-zindex:250;
 // ::-webkit-scrollbar {
 //     width: 15px;
 //     height: 15px;
@@ -51,6 +53,7 @@ body {
     // background-image: linear-gradient(90deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
     color: $maincolor;
     background-color: rgb(241, 234, 227);
+    font-family: sans-serif;
 }
 
 .allWrap {
@@ -60,26 +63,57 @@ body {
     }
 }
 
+.toggle {
+    position: fixed;
+    width: 80px;
+    height: 60px;
+    top: 0;
+    right: 0;
+    color: #fff;
+    background-color: $maincolor;
+    border-bottom-left-radius: 20px;
+    border: 2px solid $base-color;
+    border-top: transparent;
+    border-right: transparent;
+    z-index: $toggle-zindex;
+    pointer-events: auto;
+    // box-shadow: 5px 5px 0px $maincolor;
+    &-text {
+        text-align: center;
+    }
+}
+
 //チェックボックス
 .nav {
     $navwidth: 300px;
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
     width: 300px;
     background-color: $base-color;
     color: $maincolor;
     padding: 20px;
     // border-radius: 0 20px 20px 0;
-    border-right: 1px solid $maincolor;
     overflow-y: scroll;
-    z-index: 200;
+    z-index: $nav-zindex;
     &::-webkit-scrollbar {
         display: none;
     }
+    @include pc {
+        left: 0;
+        border-right: 1px solid $maincolor;
+    }
     @include sp {
-        display: none;
+        width: 92%;
+        right: 0;
+        border-left: 2px solid $maincolor;
+        transform: translateX(100%);
+        opacity: 0;
+        &.show {
+            transform: translateX(0);
+            opacity: 1;
+            transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+        }
     }
 }
 
@@ -179,7 +213,7 @@ body {
 }
 
 header {
-    margin: 0 auto 40px;
+    margin: 30px auto 40px;
     color: $maincolor;
     // background-color: #c7d0b3;
     text-align: center;
@@ -221,12 +255,13 @@ main {
     border-radius: 20px;
     background-color: rgba(rgb(245, 241, 236), 1);
     border: 1px solid $maincolor;
-    filter: drop-shadow(5px 7px 0px $maincolor);
+    box-shadow: 5px 7px 0px $maincolor;
     @include pc {
         width: 49%;
     }
     @include sp {
         width: 100%;
+        padding: 20px;
     }
     &.widthFull {
         width: 100%;
