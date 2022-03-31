@@ -13,7 +13,6 @@
 body {
   color: #A9313A;
   background-color: #f1eae3;
-  font-family: sans-serif;
 }
 
 @media screen and (min-width: 480px) {
@@ -28,7 +27,7 @@ body {
 
 .toggle {
   position: fixed;
-  width: 80px;
+  width: 60px;
   height: 60px;
   top: 0;
   right: 0;
@@ -40,10 +39,40 @@ body {
   border-right: transparent;
   z-index: 250;
   pointer-events: auto;
+  -webkit-box-shadow: 5px 5px 0px #A9313A;
+          box-shadow: 5px 5px 0px #A9313A;
 }
 
-.toggle-text {
-  text-align: center;
+.toggle-inner {
+  padding: 18px 18px;
+}
+
+.toggle-inner span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  font-size: 0;
+  -webkit-transition: all 400ms;
+  transition: all 400ms;
+}
+
+.toggle-inner span:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.toggle.close span:nth-of-type(1) {
+  -webkit-transform: translateY(6px) rotate(-45deg);
+          transform: translateY(6px) rotate(-45deg);
+}
+
+.toggle.close span:nth-child(2) {
+  opacity: 0;
+}
+
+.toggle.close span:nth-child(3) {
+  -webkit-transform: translateY(-6px) rotate(45deg);
+          transform: translateY(-6px) rotate(45deg);
 }
 
 .nav {
@@ -71,16 +100,16 @@ body {
 
 @media screen and (max-width: 480px) {
   .nav {
-    width: 92%;
+    width: 100%;
+    padding-top: 70px;
     right: 0;
-    border-left: 2px solid #A9313A;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
     opacity: 0;
+    -webkit-transition: opacity 300ms ease-in-out, -webkit-transform 400ms ease-in-out;
+    transition: opacity 300ms ease-in-out, -webkit-transform 400ms ease-in-out;
+    transition: transform 400ms ease-in-out, opacity 300ms ease-in-out;
+    transition: transform 400ms ease-in-out, opacity 300ms ease-in-out, -webkit-transform 400ms ease-in-out;
   }
   .nav.show {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
     opacity: 1;
     -webkit-transition: opacity 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
     transition: opacity 400ms ease-in-out, -webkit-transform 400ms ease-in-out;
@@ -104,6 +133,12 @@ body {
 
 .sortControl .checkBtnWrap.attention {
   line-height: 1.4;
+}
+
+@media screen and (max-width: 480px) {
+  .sortControl .checkBtnWrap.attention ul {
+    font-size: 13px;
+  }
 }
 
 .sortControl .checkBtnWrap.attention li + li {
@@ -158,6 +193,12 @@ body {
           box-sizing: border-box;
 }
 
+@media screen and (max-width: 480px) {
+  .sortControl .cond1 label span {
+    font-size: 15px;
+  }
+}
+
 .sortControl .cond1 label span::before {
   position: absolute;
   content: "";
@@ -193,6 +234,20 @@ body {
   opacity: 1;
   -webkit-transform: rotate(45deg) scale3d(1, 1, 1);
           transform: rotate(45deg) scale3d(1, 1, 1);
+}
+
+@media screen and (max-width: 480px) {
+  .sortControl .sortBtn {
+    display: block;
+    width: 60%;
+    height: 50px;
+    margin: 25px auto 0;
+    background-color: #A9313A;
+    color: #fff;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 15px;
+  }
 }
 
 @media screen and (min-width: 480px) {

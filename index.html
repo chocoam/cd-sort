@@ -45,6 +45,7 @@
                             <checkbox2 label="otoku" data-group="0" text="安く買いたい"></checkbox2>
                         </ul>
                     </div>
+                    <button class="sortBtn isSP" @click="toggleGnav()">絞り込む</button>
                     <div class="checkBtnWrap attention">
                         <ul>
                             <li>※「BONUS」かつ「OPTION」に当てはまる店舗が表示されます</li>
@@ -54,10 +55,13 @@
                 </form>
             </div>
         </nav>
-        <button class="toggle isSP" @click="toggleGnav()">
-            <p class="toggle-text" v-if="isGnav">✕</p>
-            <p class="toggle-text" v-else>MENU</p>
+        <button class="toggle isSP" @click="toggleGnav()" :class="{close:isGnav}">
+            <div class="toggle-inner"><span></span><span></span><span></span></div>
         </button>
+        <!-- <button class="toggle isSP" @click="toggleGnav()">
+            <p class="toggle-text" v-if="isGnav">✕</p>
+            <p class="toggle-text" v-else><span></span><span></span><span></span></p>
+        </button> -->
         <div class="contWrap">
             <header>
                 <h1>KIZUNA 特典ソート</h1>

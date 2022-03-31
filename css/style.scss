@@ -53,7 +53,6 @@ body {
     // background-image: linear-gradient(90deg, rgba(251, 213, 251, 1), rgba(149, 233, 243, 1));
     color: $maincolor;
     background-color: rgb(241, 234, 227);
-    font-family: sans-serif;
 }
 
 .allWrap {
@@ -65,7 +64,7 @@ body {
 
 .toggle {
     position: fixed;
-    width: 80px;
+    width: 60px;
     height: 60px;
     top: 0;
     right: 0;
@@ -77,9 +76,33 @@ body {
     border-right: transparent;
     z-index: $toggle-zindex;
     pointer-events: auto;
-    // box-shadow: 5px 5px 0px $maincolor;
-    &-text {
-        text-align: center;
+    box-shadow: 5px 5px 0px $maincolor;
+    &-inner {
+        padding: 18px 18px;
+        span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #fff;
+            font-size: 0;
+            transition: all 400ms;
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    &.close {
+        span {
+            &:nth-of-type(1) {
+                transform: translateY(6px) rotate(-45deg);
+            }
+            &:nth-child(2) {
+                opacity: 0;
+            }
+            &:nth-child(3) {
+                transform: translateY(-6px) rotate(45deg);
+            }
+        }
     }
 }
 
@@ -104,13 +127,15 @@ body {
         border-right: 1px solid $maincolor;
     }
     @include sp {
-        width: 92%;
+        width: 100%;
+        padding-top: 70px;
         right: 0;
-        border-left: 2px solid $maincolor;
-        transform: translateX(100%);
+        // border-left: 2px solid $maincolor;
+        // transform: translateX(100%);
         opacity: 0;
+        transition: transform 400ms ease-in-out, opacity 300ms ease-in-out;
         &.show {
-            transform: translateX(0);
+            // transform: translateX(0);
             opacity: 1;
             transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
         }
@@ -129,6 +154,11 @@ body {
         }
         &.attention {
             line-height: 1.4;
+            ul {
+                @include sp {
+                    font-size: 13px;
+                }
+            }
             li+li {
                 margin-top: 5px;
             }
@@ -165,6 +195,9 @@ body {
             padding: 7px 20px;
             font-size: 1.1em;
             box-sizing: border-box;
+            @include sp {
+                font-size: 15px;
+            }
             &::before {
                 position: absolute;
                 content: "";
@@ -196,6 +229,19 @@ body {
                 opacity: 1;
                 transform: rotate(45deg) scale3d(1, 1, 1);
             }
+        }
+    }
+    .sortBtn {
+        @include sp {
+            display: block;
+            width: 60%;
+            height: 50px;
+            margin: 25px auto 0;
+            background-color: $maincolor;
+            color: #fff;
+            border-radius: 25px;
+            text-align: center;
+            font-size: 15px;
         }
     }
 }
