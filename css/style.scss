@@ -115,9 +115,7 @@ body {
     width: 300px;
     background-color: $base-color;
     color: $maincolor;
-    padding: 20px;
     // border-radius: 0 20px 20px 0;
-    overflow-y: scroll;
     z-index: $nav-zindex;
     &::-webkit-scrollbar {
         display: none;
@@ -128,7 +126,6 @@ body {
     }
     @include sp {
         width: 100%;
-        padding-top: 70px;
         right: 0;
         // border-left: 2px solid $maincolor;
         // transform: translateX(100%);
@@ -143,7 +140,12 @@ body {
 }
 
 .sortControl {
+    padding: 20px;
     margin-bottom: 30px;
+    overflow-y: scroll;
+    @include sp {
+        padding: 70px 20px;
+    }
     .checkBtnWrap {
         width: 100%;
         // padding: 20px;
@@ -195,6 +197,7 @@ body {
             padding: 7px 20px;
             font-size: 1.1em;
             box-sizing: border-box;
+            font-family: sans-serif;
             @include sp {
                 font-size: 15px;
             }

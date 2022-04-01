@@ -82,8 +82,6 @@ body {
   width: 300px;
   background-color: #f1eae3;
   color: #A9313A;
-  padding: 20px;
-  overflow-y: scroll;
   z-index: 200;
 }
 
@@ -101,7 +99,6 @@ body {
 @media screen and (max-width: 480px) {
   .nav {
     width: 100%;
-    padding-top: 70px;
     right: 0;
     opacity: 0;
     -webkit-transition: opacity 300ms ease-in-out, -webkit-transform 400ms ease-in-out;
@@ -119,7 +116,15 @@ body {
 }
 
 .sortControl {
+  padding: 20px;
   margin-bottom: 30px;
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 480px) {
+  .sortControl {
+    padding: 70px 20px;
+  }
 }
 
 .sortControl .checkBtnWrap {
@@ -191,6 +196,7 @@ body {
   font-size: 1.1em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 @media screen and (max-width: 480px) {
