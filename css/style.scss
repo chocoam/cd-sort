@@ -130,11 +130,13 @@ body {
         // border-left: 2px solid $maincolor;
         // transform: translateX(100%);
         opacity: 0;
-        transition: transform 400ms ease-in-out, opacity 300ms ease-in-out;
+        visibility: hidden;
+        transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
         &.show {
             // transform: translateX(0);
             opacity: 1;
-            transition: transform 400ms ease-in-out, opacity 400ms ease-in-out;
+            visibility: visible;
+            transition: opacity 400ms ease-in-out, visibility 400ms ease-in-out;
         }
     }
 }
