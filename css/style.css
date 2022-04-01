@@ -123,7 +123,8 @@ body {
 
 @media screen and (max-width: 480px) {
   .sortControl {
-    padding: 70px 20px;
+    height: 100vh;
+    padding: 70px 20px 100px;
   }
 }
 

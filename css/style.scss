@@ -144,7 +144,8 @@ body {
     margin-bottom: 30px;
     overflow-y: scroll;
     @include sp {
-        padding: 70px 20px;
+        height: 100vh;
+        padding: 70px 20px 100px;
     }
     .checkBtnWrap {
         width: 100%;
