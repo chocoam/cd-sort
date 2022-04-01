@@ -196,7 +196,6 @@ body {
   font-size: 1.1em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: sans-serif;
 }
 
 @media screen and (max-width: 480px) {
@@ -366,6 +365,7 @@ main {
   margin-bottom: 20px;
   font-size: 14px;
   color: #fff;
+  font-family: sans-serif;
 }
 
 @media screen and (max-width: 480px) {

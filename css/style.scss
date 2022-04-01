@@ -197,7 +197,6 @@ body {
             padding: 7px 20px;
             font-size: 1.1em;
             box-sizing: border-box;
-            font-family: sans-serif;
             @include sp {
                 font-size: 15px;
             }
@@ -327,6 +326,7 @@ main {
         margin-bottom: 20px;
         font-size: 14px;
         color: #fff;
+        font-family: sans-serif;
         @include sp {
             font-size: 12px;
         }
