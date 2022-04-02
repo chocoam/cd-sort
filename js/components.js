@@ -17,6 +17,11 @@ Vue.component('resetbtn', {
     template: `<button @click="reset" type="button">reset</button>`
 })
 
+Vue.component('attentionMark', {
+    template: `<div class="attentionMark"><span class="heading">リリイベ</span><span class="date">4.13〆</span></div>
+    `
+})
+
 
 
 var app = new Vue({

@@ -16,6 +16,12 @@ body {
 }
 
 @media screen and (min-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 480px) {
   .allWrap {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -191,8 +197,8 @@ body {
   position: relative;
   cursor: pointer;
   display: inline-block;
-  padding: 7px 20px;
-  font-size: 1.1em;
+  padding: 0.4em 20px;
+  font-size: 1.2em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -272,16 +278,48 @@ header {
   margin: 30px auto 40px;
   color: #A9313A;
   text-align: center;
-  font-size: 2.5em;
-  font-family: 'Kaisei Opti', serif;
-  font-weight: 500;
 }
 
 @media screen and (max-width: 480px) {
   header {
     font-size: 2em;
-    margin: 60px auto 40px;
+    margin: 60px auto 30px;
   }
+}
+
+header h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.4em;
+  font-size: 2.5em;
+  font-family: 'Kaisei Opti', serif;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 30px;
+  }
+}
+
+header h1::before, header h1::after {
+  content: "";
+  display: inline-block;
+  margin-top: 0.1em;
+  width: 0.6em;
+  height: 0.6em;
+  background-image: url(../assets/heading1/deco-star.png);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 main {
@@ -364,23 +402,50 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 0.2em;
+  gap: 0.1em;
   top: -15px;
   right: -15px;
   width: 110px;
   height: 110px;
-  background-color: #D1DABD;
-  border: 1px solid #A9313A;
-  border-radius: 60px;
+  background-image: url(../assets/attentionMark/attentionMark.png);
+  background-size: contain;
   color: #A9313A;
   font-weight: bold;
-  font-size: 1.1em;
-  -webkit-box-shadow: 2px 4px 0px #A9313A;
-          box-shadow: 2px 4px 0px #A9313A;
+  font-family: 'Kaisei Opti', serif;
+  -webkit-font-feature-settings: "palt";
+          font-feature-settings: "palt";
+  -webkit-filter: drop-shadow(2px 4px 0 #A9313A);
+          filter: drop-shadow(2px 4px 0 #A9313A);
 }
 
-.itemList .item .attentionMark span {
-  font-size: 1.3em;
+@media screen and (max-width: 480px) {
+  .itemList .item .attentionMark {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.itemList .item .attentionMark .heading {
+  font-size: 1.5em;
+  letter-spacing: -0.2em;
+  padding-right: 0.3em;
+}
+
+@media screen and (max-width: 480px) {
+  .itemList .item .attentionMark .heading {
+    font-size: 16px;
+  }
+}
+
+.itemList .item .attentionMark .date {
+  padding-left: 0.2em;
+  font-size: 1.7em;
+}
+
+@media screen and (max-width: 480px) {
+  .itemList .item .attentionMark .date {
+    font-size: 19px;
+  }
 }
 
 .itemList .item .storeName {
