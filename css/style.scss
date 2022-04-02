@@ -22,6 +22,7 @@ $sp: 480px;
 // color
 $base-color:rgb(241, 234, 227);
 $maincolor:#A9313A;
+$green:#D1DABD;
 //z-index
 $total-zindex:300;
 $nav-zindex:200;
@@ -117,9 +118,6 @@ body {
     color: $maincolor;
     // border-radius: 0 20px 20px 0;
     z-index: $nav-zindex;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     @include pc {
         left: 0;
         border-right: 1px solid $maincolor;
@@ -142,11 +140,14 @@ body {
 }
 
 .sortControl {
+    height: 100vh;
     padding: 20px;
     margin-bottom: 30px;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     @include sp {
-        height: 100vh;
         padding: 70px 20px 100px;
     }
     .checkBtnWrap {
@@ -302,6 +303,7 @@ main {
 }
 
 .itemList .item {
+    position: relative;
     padding: 25px;
     border-radius: 20px;
     background-color: rgba(rgb(245, 241, 236), 1);
@@ -316,6 +318,29 @@ main {
     }
     &.widthFull {
         width: 100%;
+    }
+    //リリイベ
+    .attentionMark {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.2em;
+        top: -15px;
+        right: -15px;
+        width: 110px;
+        height: 110px;
+        background-color: $green;
+        border: 1px solid $maincolor;
+        border-radius: 60px;
+        color: $maincolor;
+        font-weight: bold;
+        font-size: 1.1em;
+        box-shadow: 2px 4px 0px $maincolor;
+        span {
+            font-size: 1.3em;
+        }
     }
     .storeName {
         margin-bottom: 10px;
