@@ -477,7 +477,7 @@ main {
 
 @media screen and (max-width: 480px) {
   .itemList .item .categoryList.mark {
-    padding-right: 70px;
+    padding-right: 55px;
   }
 }
 
