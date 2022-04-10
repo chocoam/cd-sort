@@ -22,6 +22,16 @@ Vue.component('attentionMark', {
     `
 })
 
+Vue.component('itemAnchor', {
+    props: ['link'],
+    template: `<div class="item-anchorWrap">
+    <div class="item-anchor">
+        <a :href="link" target="_blank">購入はこちら<span class="material-icons-sharp">open_in_new</span></a>
+    </div>
+</div>
+    `
+})
+
 
 
 var app = new Vue({

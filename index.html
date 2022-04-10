@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&family=Secular+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
     <script src="./lib/vue.js"></script>
 </head>
 
@@ -58,10 +59,6 @@
         <button class="toggle isSP" @click="toggleGnav()" :class="{close:isGnav}">
             <div class="toggle-inner"><span></span><span></span><span></span></div>
         </button>
-        <!-- <button class="toggle isSP" @click="toggleGnav()">
-            <p class="toggle-text" v-if="isGnav">✕</p>
-            <p class="toggle-text" v-else><span></span><span></span><span></span></p>
-        </button> -->
         <div class="contWrap">
             <header>
                 <h1>KIZUNA 特典ソート</h1>
@@ -77,26 +74,32 @@
                             <li class="category">選べる</li>
                             <li class="category">集合</li>
                         </ul>
-                        <dl class="bonus">
-                            <dt>★メンバー別L判生写真(3形態いずれか)
-                                <br>★メンバー別トレカ(FC盤)
-                            </dt>
-                            <dd>
-                                <div class="bonus-img"></div>
-                                <div class="bonus-img"></div>
-                                <ul>
-                                    <li>※AはAのメンバー5種、BはBのメンバー5種、通常は11種</li>
-                                    <li>※FC盤11種</li>
-                                </ul>
-                            </dd>
+                        <dl class="bonus twoCol">
+                            <div class="bonus-2colWrap">
+                                <dt>★メンバー別L判生写真(3形態いずれか)</dt>
+                                <dd>
+                                    <div class="bonus-img"><img src="/assets/img/jo1_01.png"></div>
+                                    <ul>
+                                        <li>※AはAのメンバー5種、BはBのメンバー5種、通常は11種</li>
+                                    </ul>
+                                </dd>
+                            </div>
+                            <div class="bonus-2colWrap">
+                                <dt>★メンバー別トレカ(FC盤)</dt>
+                                <dd>
+                                    <div class="bonus-img"><img src="/assets/img/jo1_02.png"></div>
+                                </dd>
+                            </div>
                         </dl>
-                        <dl class="bonus">
-                            <div class="bonus-heading">3形態セット購入</div>
-                            <dt>★推しのL判生写真 2枚<br class="isSP">＋推しがいない形態のユニットL判生写真 1枚<br class="isSP">＋2L判オリジナル集合生写真 1枚</dt>
-                            <dd>
-                                <div class="bonus-img"></div>
-                            </dd>
-                        </dl>
+                        <section class="item-subSection">
+                            <dl class="bonus">
+                                <div class="bonus-heading">3形態セット購入</div>
+                                <dt>★推しのL判生写真 2枚<br class="isSP">＋推しがいない形態のユニットL判生写真 1枚<br class="isSP">＋2L判オリジナル集合生写真 1枚</dt>
+                                <dd>
+                                    <div class="bonus-img small"><img src="/assets/img/jo1_03.png"></div>
+                                </dd>
+                            </dl>
+                        </section>
                         <section class="item-subSection">
                             <h3 class="item-heading">計算</h3>
                             <div class="counter-wrap">
@@ -145,6 +148,9 @@
                                 <div class="total">合計 ￥{{totalJo1}}</div>
                             </div>
                         </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://store.plusmember.jp/jo1/"></item-anchor>
+                        </section>
                     </item>
                     <item label="postcard event solo">
                         <attention-mark></attention-mark>
@@ -157,7 +163,7 @@
                         <dl class="bonus">
                             <dt>★ポストカード2枚組(集合＋ソロ)</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/tower.png"></div>
                                 <ul>
                                     <li>※11種ランダム</li>
                                     <li>※3形態いずれか購入</li>
@@ -191,15 +197,18 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='TowerC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='TowerSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalTower}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://tower.jp/article/feature_item/2022/03/22/0702"></item-anchor>
                         </section>
                     </item>
                     <item label="treadingcard event solo">
@@ -213,7 +222,7 @@
                         <dl class="bonus">
                             <dt>★クリアトレカ</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/hmv.png"></div>
                                 <ul>
                                     <li>※11種ランダム</li>
                                     <li>※3形態いずれか購入</li>
@@ -247,15 +256,18 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='HmvC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='HmvSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalHmv}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://www.hmv.co.jp/news/article/220317114/"></item-anchor>
                         </section>
                     </item>
                     <item label="ICsticker unit">
@@ -269,7 +281,7 @@
                         <dl class="bonus">
                             <dt>★ICカードステッカー</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/tsutaya.png"></div>
                                 <ul>
                                     <li>※5種ランダム</li>
                                     <li>※3形態いずれか購入</li>
@@ -303,15 +315,18 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='TsutayaC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='TsutayaSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalTsutaya}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://shop.tsutaya.co.jp/search_result.html?searchType=3&sakuhinCd=20839867"></item-anchor>
                         </section>
                     </item>
                     <item label="file event solo otoku">
@@ -326,7 +341,7 @@
                         <dl class="bonus">
                             <dt>★クリアファイル</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/rakuten.png"></div>
                                 <ul>
                                     <li>※11種ランダム</li>
                                     <li>※3形態いずれか購入</li>
@@ -370,6 +385,9 @@
                                 <div class="total">合計 ￥{{totalRakuten}}</div>
                             </div>
                         </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://books.rakuten.co.jp/search?sitem=JO1%E3%80%80KIZUNA&g=000&e=5&scid=su_7067"></item-anchor>
+                        </section>
                     </item>
                     <item label="sticker unit">
                         <h2 class="storeName">セブンネット</h2>
@@ -382,7 +400,7 @@
                         <dl class="bonus">
                             <dt>★ステッカー</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/seven.png"></div>
                                 <ul>
                                     <li>※5種ランダム</li>
                                     <li>※3形態いずれか購入</li>
@@ -416,15 +434,18 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='SevenC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='SevenSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalSeven}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://7net.omni7.jp/search/?keyword=jo120220525&searchKeywordFlg=1"></item-anchor>
                         </section>
                     </item>
                     <item label="megaJacket event">
@@ -437,7 +458,7 @@
                         <dl class="bonus">
                             <dt>★メガジャケ</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/amazon.png"></div>
                                 <ul>
                                     <li>※購入したCD形態と同一絵柄</li>
                                     <li>※4形態いずれか購入</li>
@@ -471,17 +492,19 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='AmazonC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='AmazonSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalAmazon}}</div>
                             </div>
                         </section>
-
+                        <section class="item-subSection">
+                            <item-anchor link="https://www.amazon.co.jp/s?rh=p_78%3AB09VT6Q1NP%7CB09VT8CW8Z%7CB09VT8FVP6%7CB09VT948W2%7CB09VT9KJ2M%7CB09VT9W97C%7CB09VTBHWY2%7CB09VTBSSJ7"></item-anchor>
+                        </section>
                     </item>
                     <item label="photo">
                         <h2 class="storeName">SonyMusicShop</h2>
@@ -493,7 +516,7 @@
                         <dl class="bonus">
                             <dt>★L判集合生写真</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/sony.png"></div>
                                 <ul>
                                     <li>※3形態いずれか購入</li>
                                 </ul>
@@ -526,15 +549,18 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='SonyC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='SonySet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalSony}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://www.sonymusicshop.jp/m/arti/artiItm.php?site=S&ima=3033&cd=79001378"></item-anchor>
                         </section>
                     </item>
                     <item label="poster">
@@ -547,7 +573,7 @@
                         <dl class="bonus">
                             <dt>★クリアポスター</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/wing.png"></div>
                                 <ul>
                                     <li>※3形態いずれか購入</li>
                                 </ul>
@@ -580,15 +606,18 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='WingC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='WingSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalWing}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://www.neowing.co.jp/products?term.prodkey=YRCS-95107,YRCS-95108,YRCS-95109,YRCS-95110"></item-anchor>
                         </section>
                     </item>
                     <item label="poster">
@@ -600,7 +629,7 @@
                         <dl class="bonus">
                             <dt>★形態別ポスター</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/normal.png"></div>
                                 <ul>
                                     <li>※3形態いずれか購入</li>
                                 </ul>
@@ -633,11 +662,11 @@
                                             <td>￥{{c}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='NormalC' min="0"></td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <td>3形態<br>セット</td>
                                             <td>￥{{set}}<span class="tax">(税込)</span></td>
                                             <td><input type='number' v-model='NormalSet' min="0"></td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                                 <div class="total">合計 ￥{{totalNormal}}</div>
@@ -653,7 +682,7 @@
                         <dl class="bonus">
                             <dt>★下敷き(アニメ絵柄)</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/anime.png"></div>
                                 <ul>
                                     <li>※アニメ盤購入</li>
                                 </ul>
@@ -692,7 +721,7 @@
                         <dl class="bonus">
                             <dt>★収納BOX</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/fortune.png"></div>
                                 <ul>
                                     <li>※3形態セット購入</li>
                                     <li>※1次受付…2022年3月22日（火）18：00～3月31日（木）23：00</li>
@@ -721,6 +750,9 @@
                                 <div class="total">合計 ￥{{totalFortune}}</div>
                             </div>
                         </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://fortunemusic.jp/jo1_202205_box/"></item-anchor>
+                        </section>
                     </item>
                     <item label="sticker ppcase">
                         <h2 class="storeName">LAPONE ONLINE SHOP</h2>
@@ -732,7 +764,7 @@
                         <dl class="bonus">
                             <dt>★各ジャケ写ステッカー＋ロゴステッカー</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/lapone_01.png"></div>
                                 <ul>
                                     <li>※3形態いずれか</li>
                                 </ul>
@@ -742,7 +774,7 @@
                             <h3 class="bonus-heading">3形態セット購入</h3>
                             <dt>★PPマルチケース</dt>
                             <dd>
-                                <div class="bonus-img"></div>
+                                <div class="bonus-img"><img src="/assets/img/lapone_02.png"></div>
                             </dd>
                         </dl>
                         <section class="item-subSection">
@@ -781,6 +813,9 @@
                                 </table>
                                 <div class="total">合計 ￥{{totalLapone}}</div>
                             </div>
+                        </section>
+                        <section class="item-subSection">
+                            <item-anchor link="https://shop.lapone.jp/fs/lapone2020/c/kizuna"></item-anchor>
                         </section>
                     </item>
                 </ul>

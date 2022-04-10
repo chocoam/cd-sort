@@ -356,7 +356,7 @@ main {
         font-family: 'Kaisei Opti',
         serif;
         font-feature-settings: "palt";
-        filter: drop-shadow(2px 4px 0 $maincolor);
+        filter: drop-shadow(1px 2px 0 $maincolor);
         @include sp {
             width: 90px;
             height: 90px;
@@ -409,8 +409,19 @@ main {
         +.bonus {
             margin-top: 15px;
         }
+        &.twoCol {
+            display: flex;
+            @include pc {
+                gap: 30px;
+                justify-content: space-between;
+            }
+            @include sp {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
         &-heading {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             padding: 10px 15px;
             background-color: $maincolor;
             color: #fff;
@@ -423,6 +434,8 @@ main {
         }
         dt {
             margin-bottom: 0.5em;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid $maincolor;
             font-size: 1.2em;
             font-weight: bold;
             line-height: 1.4;
@@ -434,10 +447,21 @@ main {
             .bonus-img {
                 margin-bottom: 10px;
                 width: 100%;
-                height: 200px;
-                border: 1px solid $maincolor;
+                // height: 200px;
+                // border: 1px solid $maincolor;
+                img {
+                    object-fit: contain;
+                    width: 100%;
+                    height: 100%;
+                }
                 @include sp {
-                    height: 150px;
+                    // height: 150px;
+                }
+                &.small {
+                    @include pc {
+                        margin: 0 auto 10px;
+                        width: 60%;
+                    }
                 }
             }
         }
@@ -521,6 +545,31 @@ main {
         text-align: right;
         @include sp {
             font-size: 16px;
+        }
+    }
+    //購入はこちら
+    .item-anchorWrap {
+        text-align: center;
+    }
+    .item-anchor {
+        margin: 0 auto;
+        color: #fff;
+        text-align: center;
+        font-size: 1.2em;
+        a {
+            display: inline-block;
+            position: relative;
+            width: 60%;
+            max-width: 300px;
+            padding: 20px 25px 20px 20px;
+            background-color: #A9313A;
+            border-radius: 30px;
+        }
+        span {
+            position: absolute;
+            margin: auto;
+            right: 20px;
+            font-family: 'Material Icons';
         }
     }
 }
