@@ -557,7 +557,7 @@ main {
         text-align: center;
         font-size: 1.2em;
         @include sp {
-            font-size: 15px;
+            font-size: 14px;
         }
         a {
             display: inline-block;
@@ -568,6 +568,9 @@ main {
             background-color: #A9313A;
             border-radius: 30px;
             transition: 200ms;
+            @include sp {
+                padding: 15px 25px 15px 20px;
+            }
             &:hover {
                 @include pc {
                     transform: translateY(2px);
