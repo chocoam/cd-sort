@@ -42,7 +42,7 @@ var app = new Vue({
         b: 3850,
         c: 3300,
         set: 11000,
-        set10off: 9000,
+        set10off: 9900,
         fc: 4950,
         anime: 3300,
         jo1A: 0,
