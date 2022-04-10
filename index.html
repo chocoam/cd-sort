@@ -27,41 +27,39 @@
     <div id="app" class="allWrap">
         <nav class="nav" :class="{show:isGnav}">
             <div class="sortControl">
-                <form>
-                    <div class="checkBtnWrap bonus">
-                        <h2 class="checkBtn-heading">BONUS</h2>
-                        <ul class="cond1">
-                            <checkbox label="photo" text="生写真"></checkbox>
-                            <checkbox label="treadingcard" text="トレカ"></checkbox>
-                            <checkbox label="postcard" text="ポストカード"></checkbox>
-                            <checkbox label="box" text="収納BOX"></checkbox>
-                            <checkbox label="sticker" text="ステッカー"></checkbox>
-                            <checkbox label="ppcase" text="PPマルチケース"></checkbox>
-                            <checkbox label="megaJacket" text="メガジャケ"></checkbox>
-                            <checkbox label="file" text="クリアファイル"></checkbox>
-                            <checkbox label="ICsticker" text="ICカードステッカー"></checkbox>
-                            <checkbox label="poster" text="ポスター"></checkbox>
-                            <checkbox label="shitajiki" text="下敷き"></checkbox>
-                            <checkbox label="event" text="リリイベ申込"></checkbox>
-                        </ul>
-                    </div>
-                    <div class="checkBtnWrap other">
-                        <h2 class="checkBtn-heading">OPTION</h2>
-                        <ul class="cond1">
-                            <checkbox2 label="choose" :data="0" text="推し選びたい"></checkbox2>
-                            <checkbox2 label="solo" data-group="0" text="単体のが欲しい"></checkbox2>
-                            <checkbox2 label="unit" data-group="0" text="ユニットのが欲しい"></checkbox2>
-                            <checkbox2 label="otoku" data-group="0" text="安く買いたい"></checkbox2>
-                        </ul>
-                    </div>
-                    <button class="sortBtn isSP" @click="toggleGnav()">絞り込む</button>
-                    <div class="checkBtnWrap attention">
-                        <ul>
-                            <li>※「BONUS」かつ「OPTION」に当てはまる店舗が表示されます</li>
-                            <li>※「OPTION」のみの検索も○</li>
-                        </ul>
-                    </div>
-                </form>
+                <div class="checkBtnWrap bonus">
+                    <h2 class="checkBtn-heading">BONUS</h2>
+                    <ul class="cond1">
+                        <checkbox label="photo" text="生写真"></checkbox>
+                        <checkbox label="treadingcard" text="トレカ"></checkbox>
+                        <checkbox label="postcard" text="ポストカード"></checkbox>
+                        <checkbox label="box" text="収納BOX"></checkbox>
+                        <checkbox label="sticker" text="ステッカー"></checkbox>
+                        <checkbox label="ppcase" text="PPマルチケース"></checkbox>
+                        <checkbox label="megaJacket" text="メガジャケ"></checkbox>
+                        <checkbox label="file" text="クリアファイル"></checkbox>
+                        <checkbox label="ICsticker" text="ICカードステッカー"></checkbox>
+                        <checkbox label="poster" text="ポスター"></checkbox>
+                        <checkbox label="shitajiki" text="下敷き"></checkbox>
+                        <checkbox label="event" text="リリイベ申込"></checkbox>
+                    </ul>
+                </div>
+                <div class="checkBtnWrap other">
+                    <h2 class="checkBtn-heading">OPTION</h2>
+                    <ul class="cond1">
+                        <checkbox2 label="choose" :data="0" text="推し選びたい"></checkbox2>
+                        <checkbox2 label="solo" data-group="0" text="単体のが欲しい"></checkbox2>
+                        <checkbox2 label="unit" data-group="0" text="ユニットのが欲しい"></checkbox2>
+                        <checkbox2 label="otoku" data-group="0" text="安く買いたい"></checkbox2>
+                    </ul>
+                </div>
+                <button class="sortBtn isSP" @click="toggleGnav()">絞り込む</button>
+                <div class="checkBtnWrap attention">
+                    <ul>
+                        <li>※「BONUS」かつ「OPTION」に当てはまる店舗が表示されます</li>
+                        <li>※「OPTION」のみの検索も○</li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <button class="toggle isSP" @click="toggleGnav()" :class="{close:isGnav}">
