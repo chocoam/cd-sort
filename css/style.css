@@ -581,8 +581,6 @@ main {
 }
 
 .itemList .item .item-heading {
-  position: relative;
-  width: 100%;
   margin-bottom: 10px;
   padding: 10px 15px;
   background-color: #A9313A;
@@ -598,36 +596,18 @@ main {
   }
 }
 
-.itemList .item .item-heading span {
-  position: absolute;
-  margin: auto;
-  right: 20px;
-  font-size: 1.5em;
-  font-family: 'Material Icons';
-}
-
 .itemList .item .counter {
-  display: none;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #A9313A;
-}
-
-.itemList .item .counter.show {
-  display: block;
-}
-
-.itemList .item .counter table {
   width: 100%;
   font-size: 1.2em;
 }
 
 @media screen and (max-width: 480px) {
-  .itemList .item .counter table {
+  .itemList .item .counter {
     font-size: 14px;
   }
 }
 
-.itemList .item .counter table.col3 td:nth-child(1) {
+.itemList .item .counter.col3 td:nth-child(1) {
   width: 15%;
 }
 
@@ -676,6 +656,7 @@ main {
 .itemList .item .total {
   margin-top: 10px;
   padding-top: 10px;
+  border-top: 2px solid #A9313A;
   font-weight: bold;
   font-size: 1.3em;
   text-align: right;

@@ -5,7 +5,14 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/favicon.png">
     <title>KIZUNA 特典ソート</title>
+    <!-- twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="KIZUNA 特典ソート">
+    <meta name="twitter:description" content="「KIZUNA」の特典ソート・計算にお使い下さい">
+    <meta name="twitter:image" content="https://chocoam.github.io/cd-sort/assets/ogp.jpg">
+
     <link rel="stylesheet" href="css/destyle.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,54 +108,50 @@
                             </dl>
                         </section>
                         <section class="item-subSection">
-                            <button class="item-heading" @click="accordion()">計算<span class="material-icons-sharp">
-                                chevron_right
-                                </span></button>
+                            <h3 class="item-heading">計算</h3>
                             <div class="counter-wrap">
-                                <div class="counter" :class="{show:isAccordion}">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>形態</th>
-                                                <th>値段</th>
-                                                <th>個数</th>
-                                                <th class="isPC">小計</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>A</td>
-                                                <td>￥{{a}}<span class="tax">(税込)</span></td>
-                                                <td><input type='number' v-model='jo1A' min="0"></td>
-                                                <td class="isPC">=￥{{sumJo1A}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>B</td>
-                                                <td>￥{{b}}<span class="tax">(税込)</span></td>
-                                                <td><input type='number' v-model='jo1B' min="0"></td>
-                                                <td class="isPC">=￥{{sumJo1B}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>通常</td>
-                                                <td>￥{{c}}<span class="tax">(税込)</span></td>
-                                                <td><input type='number' v-model='jo1C' min="0"></td>
-                                                <td class="isPC">=￥{{sumJo1C}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3形態<br class="isSP">セット</td>
-                                                <td>￥{{set}}<span class="tax">(税込)</span></td>
-                                                <td><input type='number' v-model='jo1Set' min="0"></td>
-                                                <td class="isPC">=￥{{sumJo1Set}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>FC</td>
-                                                <td>￥{{fc}}<span class="tax">(税込)</span></td>
-                                                <td><input type='number' v-model='jo1Fc' min="0"></td>
-                                                <td class="isPC">=￥{{sumJo1Fc}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <table class="counter">
+                                    <thead>
+                                        <tr>
+                                            <th>形態</th>
+                                            <th>値段</th>
+                                            <th>個数</th>
+                                            <th class="isPC">小計</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A</td>
+                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1A' min="0"></td>
+                                            <td class="isPC">=￥{{sumJo1A}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>B</td>
+                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1B' min="0"></td>
+                                            <td class="isPC">=￥{{sumJo1B}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>通常</td>
+                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1C' min="0"></td>
+                                            <td class="isPC">=￥{{sumJo1C}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3形態<br class="isSP">セット</td>
+                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1Set' min="0"></td>
+                                            <td class="isPC">=￥{{sumJo1Set}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FC</td>
+                                            <td>￥{{fc}}<span class="tax">(税込)</span></td>
+                                            <td><input type='number' v-model='jo1Fc' min="0"></td>
+                                            <td class="isPC">=￥{{sumJo1Fc}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 <div class="total">合計 ￥{{totalJo1}}</div>
                             </div>
                         </section>
