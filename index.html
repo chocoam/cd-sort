@@ -101,50 +101,54 @@
                             </dl>
                         </section>
                         <section class="item-subSection">
-                            <h3 class="item-heading">計算</h3>
+                            <button class="item-heading" @click="accordion()">計算<span class="material-icons-sharp">
+                                chevron_right
+                                </span></button>
                             <div class="counter-wrap">
-                                <table class="counter">
-                                    <thead>
-                                        <tr>
-                                            <th>形態</th>
-                                            <th>値段</th>
-                                            <th>個数</th>
-                                            <th class="isPC">小計</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>A</td>
-                                            <td>￥{{a}}<span class="tax">(税込)</span></td>
-                                            <td><input type='number' v-model='jo1A' min="0"></td>
-                                            <td class="isPC">=￥{{sumJo1A}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>B</td>
-                                            <td>￥{{b}}<span class="tax">(税込)</span></td>
-                                            <td><input type='number' v-model='jo1B' min="0"></td>
-                                            <td class="isPC">=￥{{sumJo1B}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>通常</td>
-                                            <td>￥{{c}}<span class="tax">(税込)</span></td>
-                                            <td><input type='number' v-model='jo1C' min="0"></td>
-                                            <td class="isPC">=￥{{sumJo1C}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3形態<br class="isSP">セット</td>
-                                            <td>￥{{set}}<span class="tax">(税込)</span></td>
-                                            <td><input type='number' v-model='jo1Set' min="0"></td>
-                                            <td class="isPC">=￥{{sumJo1Set}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>FC</td>
-                                            <td>￥{{fc}}<span class="tax">(税込)</span></td>
-                                            <td><input type='number' v-model='jo1Fc' min="0"></td>
-                                            <td class="isPC">=￥{{sumJo1Fc}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="counter" :class="{show:isAccordion}">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>形態</th>
+                                                <th>値段</th>
+                                                <th>個数</th>
+                                                <th class="isPC">小計</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>A</td>
+                                                <td>￥{{a}}<span class="tax">(税込)</span></td>
+                                                <td><input type='number' v-model='jo1A' min="0"></td>
+                                                <td class="isPC">=￥{{sumJo1A}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>B</td>
+                                                <td>￥{{b}}<span class="tax">(税込)</span></td>
+                                                <td><input type='number' v-model='jo1B' min="0"></td>
+                                                <td class="isPC">=￥{{sumJo1B}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>通常</td>
+                                                <td>￥{{c}}<span class="tax">(税込)</span></td>
+                                                <td><input type='number' v-model='jo1C' min="0"></td>
+                                                <td class="isPC">=￥{{sumJo1C}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3形態<br class="isSP">セット</td>
+                                                <td>￥{{set}}<span class="tax">(税込)</span></td>
+                                                <td><input type='number' v-model='jo1Set' min="0"></td>
+                                                <td class="isPC">=￥{{sumJo1Set}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>FC</td>
+                                                <td>￥{{fc}}<span class="tax">(税込)</span></td>
+                                                <td><input type='number' v-model='jo1Fc' min="0"></td>
+                                                <td class="isPC">=￥{{sumJo1Fc}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div class="total">合計 ￥{{totalJo1}}</div>
                             </div>
                         </section>
@@ -820,6 +824,13 @@
                     </item>
                 </ul>
             </main>
+            <footer>
+                <ul>
+                    <li>当サイトはファンが作った非公式サイトです。</li>
+                    <li>絵柄など詳しい情報は<a href="https://jo1.jp/news/detail/1748" target="_blank">JO1公式サイト</a>をご確認ください。</li>
+                </ul>
+                <div class="author">作成者:<a href="https://twitter.com/amk_pj">@amk_pj</a></div>
+            </footer>
             <div class="bottom-total">
                 <div class="resetBtn"><button @click="reset" type="button">Total Reset</button></div>
                 <div class="allTotal"><span>Total</span><span class="allTotal-text">¥{{total}}</span></div>

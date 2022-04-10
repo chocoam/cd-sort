@@ -93,6 +93,7 @@ var app = new Vue({
         LaponeC: 0,
         LaponeSet: 0,
         isGnav: false,
+        isAccordion: false,
     }),
     computed: {
         sumJo1A: function() { return this.a * this.jo1A },
@@ -173,6 +174,9 @@ var app = new Vue({
     methods: {
         toggleGnav() {
             this.isGnav = !this.isGnav
+        },
+        accordion() {
+            this.isAccordion = !this.isAccordion
         },
         reset: () => {
             Object.assign(app.$data, app.$options.data());

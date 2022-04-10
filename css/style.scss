@@ -478,6 +478,8 @@ main {
         margin-top: 20px;
     }
     .item-heading {
+        position: relative;
+        width: 100%;
         margin-bottom: 10px;
         padding: 10px 15px;
         background-color: $maincolor;
@@ -488,17 +490,32 @@ main {
         @include sp {
             font-size: 17px;
         }
+        span {
+            position: absolute;
+            margin: auto;
+            right: 20px;
+            font-size: 1.5em;
+            font-family: 'Material Icons';
+        }
     }
     //計算表
     .counter {
-        width: 100%;
-        font-size: 1.2em;
-        @include sp {
-            font-size: 14px;
+        display: none;
+        padding-bottom: 10px;
+        border-bottom: 2px solid $maincolor;
+        &.show {
+            display: block;
         }
-        &.col3 {
-            td:nth-child(1) {
-                width: 15%;
+        table {
+            width: 100%;
+            font-size: 1.2em;
+            @include sp {
+                font-size: 14px;
+            }
+            &.col3 {
+                td:nth-child(1) {
+                    width: 15%;
+                }
             }
         }
         thead {
@@ -539,7 +556,7 @@ main {
     .total {
         margin-top: 10px;
         padding-top: 10px;
-        border-top: 2px solid $maincolor;
+        // border-top: 2px solid $maincolor;
         font-weight: bold;
         font-size: 1.3em;
         text-align: right;
@@ -556,6 +573,9 @@ main {
         color: #fff;
         text-align: center;
         font-size: 1.2em;
+        @include sp {
+            font-size: 15px;
+        }
         a {
             display: inline-block;
             position: relative;
@@ -564,6 +584,12 @@ main {
             padding: 20px 25px 20px 20px;
             background-color: #A9313A;
             border-radius: 30px;
+            transition: 200ms;
+            &:hover {
+                @include pc {
+                    transform: translateY(2px);
+                }
+            }
         }
         span {
             position: absolute;
@@ -597,6 +623,7 @@ main {
         font-size: 1.2em;
         font-weight: bold;
         filter: drop-shadow(5px 7px 0px $maincolor);
+        transition: 200ms;
         @include pc {
             border-top-left-radius: 20px;
         }
@@ -606,6 +633,11 @@ main {
             border-left: 1px solid $base-color;
             text-align: center;
             font-size: 17px;
+        }
+        &:hover {
+            @include pc {
+                transform: translateY(2px);
+            }
         }
     }
     .allTotal {
@@ -629,5 +661,23 @@ main {
             font-size: 1.4em;
             font-size: 20px;
         }
+    }
+}
+
+footer {
+    line-height: 1.5;
+    @include pc {
+        margin: 0 auto 50px;
+        width: 1000px;
+    }
+    @include sp {
+        margin-bottom: 80px;
+        font-size: 14px;
+    }
+    a {
+        text-decoration: underline;
+    }
+    .author {
+        margin-top: 20px;
     }
 }
